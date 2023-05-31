@@ -20,7 +20,7 @@ npm i cloudflare-image-resize
 ## Usage
 
 ```typescript jsx
-import {Image} from '@keyute/cloudflare-image-resize'
+import {Image} from 'cloudflare-image-resize'
 
 const oldImage = <img src={'/image.png'}/>
 
