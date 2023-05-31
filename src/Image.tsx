@@ -89,7 +89,7 @@ export const Image: React.FC<ImageProps> = ({force, options, ...props}) => {
   }
   const strippedSrc = props.src.replace(/^\/|\/$/g, '')
   const src = getImageSrc(strippedSrc, options)
-  const sizes = options?.widths ? getSizes(options.widths, options.maxWidth ?? (options.width ? Math.max(options.width, ...options.widths) : Math.max(...options.widths))) : ''
+  const sizes = options?.widths ? getSizes(options.widths, options.maxWidth ?? (options.width ? Math.max(options.width, ...options.widths) : Math.max(...options.widths))) : props.sizes
   const srcSet = getSrcSets(strippedSrc, options)
   return <img {...props} src={src} sizes={sizes} srcSet={options?.widths ? srcSet : props.srcSet}/>
 }
