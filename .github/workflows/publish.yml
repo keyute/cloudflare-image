@@ -16,7 +16,9 @@ jobs:
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
+      - uses: olegtarasov/get-tag@v2.1.2
+      - run: npm version ${{ env.GIT_TAG_NAME }} --no-git-tag-version
       - run: npm run build
-      - run: npm run release
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
