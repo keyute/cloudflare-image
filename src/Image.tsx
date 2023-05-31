@@ -1,14 +1,9 @@
 import React from "react";
 
-export type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
-  ? Acc[number]
-  : Enumerate<N, [...Acc, Acc['length']]>
-export type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
-
 export interface ImageOptions {
   anim?: boolean
   background?: string
-  blur?: IntRange<1, 250>
+  blur?: number
   brightness?: number
   compression?: boolean
   contrast?: number
@@ -17,16 +12,17 @@ export interface ImageOptions {
   fit?: 'scale-down' | 'contain' | 'cover' | 'crop' | 'pad'
   format?: 'auto' | 'avif' | 'webp' | 'json'
   gamma?: number
-  gravity?: string,
+  gravity?: 'auto' | 'left' | 'right' | 'top' | 'bottom' | string,
   height?: number
   width?: number
   widths?: number[]
   maxWidth?: number,
   metadata?: 'keep' | 'copyright' | 'none'
-  quality?: IntRange<1, 100>
-  rotate?: IntRange<0, 360>
+  quality?: number
+  rotate?: number
   sharpen?: number
-  trim?: string
+  trim?: string,
+  redirectOnError?: boolean
 }
 
 export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -41,7 +37,7 @@ function getOptions(options: ImageOptions): string {
   if (options.background) strings.push(`background=${options.background}`)
   if (options.blur) strings.push(`blur=${options.blur}`)
   if (options.brightness) strings.push(`brightness=${options.brightness}`)
-  if (options.compression) strings.push(`compression=true`)
+  if (options.compression) strings.push(`compression=fast`)
   if (options.contrast) strings.push(`contrast=${options.contrast}`)
   if (options.dpr) strings.push(`dpr=${options.dpr}`)
   strings.push(`fit=${options.fit ?? 'scale-down'}`)
@@ -55,6 +51,7 @@ function getOptions(options: ImageOptions): string {
   if (options.rotate) strings.push(`rotate=${options.rotate}`)
   if (options.sharpen) strings.push(`sharpen=${options.sharpen}`)
   if (options.trim) strings.push(`trim=${options.trim}`)
+  if (options.redirectOnError) strings.push('onerror=redirect')
   return strings.join(',')
 }
 
