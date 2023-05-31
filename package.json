@@ -1,15 +1,23 @@
 {
   "name": "cloudflare-image-resize",
-  "version": "0.1.3",
+  "author": "Bryan Low <git@lowbryan.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keyute/cloudflare-image-resize.git"
+  },
+  "version": "1.0.0",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc && cp package.json README.md ./dist"
+    "build": "npm run clean && tsc && cp package.json README.md ./dist",
+    "release": "release-it --no-git"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "release-it": "^15.10.3",
     "typescript": "^4.9.5"
   },
   "keywords": [

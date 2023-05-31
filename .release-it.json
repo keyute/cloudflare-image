@@ -1,0 +1,6 @@
+{
+  "npm": {
+    "ignoreVersion": true,
+    "publishPath": "dist"
+  }
+}
