@@ -49,3 +49,11 @@ The component does no validation beyond typing. Please refer to
 the [docs](https://developers.cloudflare.com/images/image-resizing/url-format/#options) to ensure what you're passing
 into the options is valid.
 
+## Contributing
+
+This component is used across all projects I've worked on. If you find a bug or have a feature request, please
+open an issue or submit a PR. 
+
+As this component is built based on the requirements across all of my projects, any
+feature requests outside of that scope will likely be not worked on. As such, I recommend submitting a PR if you
+want to add a feature that you need.
