@@ -1,7 +1,7 @@
-# Cloudflare Image Resize
+# Cloudflare Image Component
 
 A React component that aims to take advantage
-of [Cloudflare Image Resizing](https://developers.cloudflare.com/images/image-resizing/) without an object storage.
+of [Cloudflare Image](https://developers.cloudflare.com/images/transform-images/transform-via-url/) without an object storage.
 
 ## Features
 
@@ -14,13 +14,13 @@ of [Cloudflare Image Resizing](https://developers.cloudflare.com/images/image-re
 ## Install
 
 ```bash
-npm i cloudflare-image-resize
+npm i cloudflare-image
 ```
 
 ## Usage
 
 ```typescript jsx
-import {Image} from 'cloudflare-image-resize'
+import {Image} from 'cloudflare-image'
 
 const oldImage = <img src={'/image.png'}/>
 
