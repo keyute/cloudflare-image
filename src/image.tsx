@@ -1,4 +1,4 @@
-import type { FC, ImgHTMLAttributes } from 'react'
+import type { ImgHTMLAttributes } from 'react'
 
 export interface ImageOptions {
   anim?: boolean
@@ -79,7 +79,7 @@ function getSrcSets(strippedSrc: string, options?: ImageOptions,): string {
   return strings.join(', ')
 }
 
-export const Image: FC<ImageProps> = ({force, options, ...props}) => {
+export const Image = ({force, options, ...props}: ImageProps) => {
   const useCloudflare = process.env.NODE_ENV === 'production' || force === true
   if (!useCloudflare) {
     return <img {...props}/>

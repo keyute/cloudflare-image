@@ -8,17 +8,17 @@ jobs:
     name: Publish
     environment: production
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
-      - uses: olegtarasov/get-tag@v2.1.2
-      - run: npm version ${{ env.GIT_TAG_NAME }} --no-git-tag-version
+      - run: npm version "${GITHUB_REF#refs/tags/}" --no-git-tag-version
       - run: npm run build
-      - run: npm publish ./dist
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - run: npm publish ./dist --provenance
