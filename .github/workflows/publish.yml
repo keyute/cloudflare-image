@@ -6,7 +6,6 @@ on:
 permissions: {}
 jobs:
   publish:
-    name: Publish
     environment: production
     runs-on: ubuntu-latest
     permissions:
