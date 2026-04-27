@@ -7,16 +7,38 @@
     "url": "https://github.com/keyute/cloudflare-image.git"
   },
   "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "npm run clean && tsc && cp package.json README.md ./dist"
+    "build": "tsdown"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "devDependencies": {
-    "@types/node": "^22.5.5",
-    "@types/react": "^18.3.8",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^5.6.2"
+    "@types/react": "19.2.14",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "tsdown": "0.21.10",
+    "typescript": "6.0.3"
   },
   "keywords": [
     "cloudflare",
