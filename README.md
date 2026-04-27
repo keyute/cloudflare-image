@@ -13,6 +13,8 @@ of [Cloudflare Image](https://developers.cloudflare.com/images/transform-images/
 
 ## Install
 
+Requires React 19 or later.
+
 ```bash
 npm i cloudflare-image
 ```
@@ -20,7 +22,7 @@ npm i cloudflare-image
 ## Usage
 
 ```typescript jsx
-import {Image} from 'cloudflare-image'
+import {Image, buildImageUrl} from 'cloudflare-image'
 
 const oldImage = <img src={'/image.png'}/>
 
@@ -31,16 +33,22 @@ const image = <Image src={'/image.png'}/>
 const enabledImage = <Image src={'/image.png'} enabled={true}/>
 
 // Resize the image to 300px wide
-const resizedImage = <Image src={'/image.png'} options={{width: 300}}/>
+const resizedImage = <Image src={'/image.png'} width={300}/>
 
 // Responsive image with width breakpoints: 150px, 300px, 500px (largest: max width)
-const responsiveImage = <Image src={'/image.png'} options={{width: 300, widths: [150, 500]}}/>
+const responsiveImage = <Image src={'/image.png'} width={300} options={{widths: [150, 500]}}/>
 
 // ... Optionally, specify a max width instead
-const responsiveMaxWidthImage = <Image src={'/image.png'} options={{width: 300, widths: [150, 500], maxWidth: 400}}/>
+const responsiveMaxWidthImage = <Image src={'/image.png'} width={300} options={{widths: [150, 500], maxWidth: 400}}/>
 
 // Responsive image for high-density displays
-const responsiveDprImage = <Image src={'/image.png'} options={{width: 300, widths: [150, 500], dprs: [1, 2]}}/>
+const responsiveDprImage = <Image src={'/image.png'} width={300} options={{widths: [150, 500], dprs: [1, 2]}}/>
+
+// Redirect to original image on error
+const fallbackImage = <Image src={'/image.png'} options={{redirectOnError: true}}/>
+
+// Build a Cloudflare image URL without the component
+const url = buildImageUrl('/image.png', {width: 300, quality: 80})
 ```
 
 ## Configuration
