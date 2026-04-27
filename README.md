@@ -9,7 +9,7 @@ of [Cloudflare Image](https://developers.cloudflare.com/images/transform-images/
 - Easily create responsive images with width and DPR breakpoints
 - Control how images are resized
   with [options](https://developers.cloudflare.com/images/image-resizing/url-format/#options)
-- Automatically disabled during development unless forced
+- Automatically disabled during development unless explicitly enabled
 
 ## Install
 
@@ -27,8 +27,8 @@ const oldImage = <img src={'/image.png'}/>
 // Replace the tag to enjoy resizing benefits from Cloudflare
 const image = <Image src={'/image.png'}/>
 
-// Force cloudflare url during development
-const forcedImage = <Image src={'/image.png'} force={true}/>
+// Enable cloudflare url during development
+const enabledImage = <Image src={'/image.png'} enabled={true}/>
 
 // Resize the image to 300px wide
 const resizedImage = <Image src={'/image.png'} options={{width: 300}}/>

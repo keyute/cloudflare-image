@@ -25,7 +25,7 @@ export interface ImageOptions {
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string
-  force?: boolean
+  enabled?: boolean
   options?: ImageOptions
 }
 
@@ -79,8 +79,8 @@ function getSrcSets(strippedSrc: string, options: ImageOptions, width?: number |
   return strings.join(', ')
 }
 
-export const Image = ({ force, options, ...props }: ImageProps) => {
-  const useCloudflare = process.env.NODE_ENV === 'production' || force === true
+export const Image = ({ enabled, options, ...props }: ImageProps) => {
+  const useCloudflare = enabled ?? process.env.NODE_ENV === 'production'
   if (!useCloudflare) {
     return <img {...props} />
   }
