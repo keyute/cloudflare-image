@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC, ImgHTMLAttributes } from 'react'
 
 export interface ImageOptions {
   anim?: boolean
@@ -25,7 +25,7 @@ export interface ImageOptions {
   redirectOnError?: boolean
 }
 
-export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string,
   force?: boolean
   options?: ImageOptions
@@ -79,7 +79,7 @@ function getSrcSets(strippedSrc: string, options?: ImageOptions,): string {
   return strings.join(', ')
 }
 
-export const Image: React.FC<ImageProps> = ({force, options, ...props}) => {
+export const Image: FC<ImageProps> = ({force, options, ...props}) => {
   const useCloudflare = process.env.NODE_ENV === 'production' || force === true
   if (!useCloudflare) {
     return <img {...props}/>
